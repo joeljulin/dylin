@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DyLiN: Making Light Field Networks Dynamic</title>
+  <!-- Bootstrap -->
+  <link href="./css/bootstrap-4.4.1.css" rel="stylesheet">
+  <link href="./css/project.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/font-awesome.min.css">
+</head>
+
+<!-- cover -->
+
+<body>
+  <section>
+    <div class="jumbotron text-center mt-0">
+        <div class="section logos" style="text-align:center">
+          <IMG src="./images/cmu-wordmark-stacked-r.png" height="80" border="0">
+          </td>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+          <IMG src="./images/RI_small.png" height="80"
+              border="0"></td>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+          <IMG src="./images/fujitsu.png" height="60" border="0"></td>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+          <IMG src="./images/cvpr_logo.png" height="80" border="0">
+          </td>
+        </div></p>
+        <div class="col-12">
+          <h2>DyLiN: Making Light Field Networks Dynamic</h2>
+          <h5><strong>(CVPR 2023)</strong></h5>            
+          <!-- <h4 style="color:#5a6268;">Arxiv 2022</h4> -->
+          <p></p>
+          <h6>
+          <div class="authors">
+            <a href="https://heng14.github.io/" target="_blank">Heng Yu</a><sup> 1</sup>&#160;&#160;
+            <a href="https://joeljulin.github.io/" target="_blank">Joel Julin</a><sup> 1</sup>&#160;&#160;
+            <a href="https://scholar.google.com/citations?user=rSqodggAAAAJ&hl=es" target="_blank">Zoltán Á Milacski </a><sup> 1</sup>&#160;&#160;
+            <a href="https://scholar.google.com/citations?user=AFaeUrYAAAAJ&hl=en" target="_blank">Koichiro Niinuma</a><sup> 2</sup>&#160;&#160;
+            <a href="https://www.laszlojeni.com/" target="_blank">László A. Jeni</a><sup> 1</sup>&#160;&#160;
+          </div>
+          <div class="affiliations">
+            <sup>1</sup>Carnegie Mellon University&#160;&#160;
+            <sup>2</sup>Fujitsu Research of America&#160;&#160;
+          </div>
+          <p></p>
+          <div class="row justify-content-center">
+            <div class="column">
+                <p class="mb-5"><a class="btn btn-large btn-light" href="https://arxiv.org/abs/2211.08610" role="button" target="_blank">
+                  <i class="fa fa-file"></i> Paper</a> </p>
+            </div>
+          </div>
+        </h6></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="jumbotron-grey">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Abstract & Method</h3>
+          <br>
+          <div class="row" style="margin-bottom:5px">
+            <div class="col" style="text-align:center">
+              <img class="thumbnail" src="./images/front.png" style="width:80%; margin-bottom:20px">
+            </div>
+          </div>
+          <p class="text-left">
+            Light Field Networks, the re-formulations of radiance fields to oriented rays, are magnitudes faster than
+            their coordinate network counterparts, and provide
+            higher fidelity with respect to representing 3D structures from 2D observations. They would be well suited
+            for generic scene representation and manipulation,
+            but suffer from one problem: they are limited to holistic and static scenes. In this paper, we propose the
+            Dynamic Light Field Network (DyLiN) method that can handle non-rigid deformations,
+            including topological changes. We learn a deformation field from input rays to canonical rays, and lift them
+            into a higher dimensional space to handle discontinuities.</p>
+            <div class="row" style="margin-bottom:5px">
+              <div class="col" style="text-align:center">
+                <img class="thumbnail" src="./images/DyLiN.png" style="width:70%; margin-bottom:0px">
+              </div>
+            </div>
+            <p class="text-fig">Schematic diagram of our proposed DyLiN architecture. Given a ray r = (o, d) and time t as input, we deform r into
+              r' = (o', d'), and sample few points x<sub>k</sub>, k = 1, . . . , K along r' to
+              encode it (blue). In parallel, we also lift r and t to the hyperspace
+              code w (green), and concatenate it with each x<sub>k</sub>. We use the concatenation 
+              to regress the RGB color of r at t directly (red).
+            </p> 
+            <p class="text-left">We further introduce CoDyLiN, which augments DyLiN with controllable
+              attribute inputs. We train both models via knowledge distillation from pretrained dynamic 
+              radiance fields. We evaluated DyLiN using both synthetic
+              and real world datasets that include non-rigid deformations of
+              varying difficulty and type. DyLiN outperformed state-of-the art methods in terms of visual fidelity (1.4 −
+              2.8dB average PSNR improvement) and compute complexity (25 − 71× render time speedup).
+              We also tested CoDyLiN on attribute annotated data and it surpassed its teacher model.
+            </p>
+          </p>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="col-12 text-center">
+          <h3>Method</h3>
+          <br>
+          <div class="row" style="margin-bottom:5px">
+            <div class="col" style="text-align:center">
+              <img class="thumbnail" src="./images/DyLiN.png" style="width:70%; margin-bottom:20px">
+            </div>
+          </div>
+          <p class="text-left">
+            
+          </p>
+        </div>
+      </div> -->
+    </div>
+  </section>
+  <br>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Results</h3>
+          <br>
+          <p class="text-left"> Below demonstrates the rendering quality and speed of our DyLiN method (Right) compared to HyperNeRF
+            (Left), the previous state-of-the-art, on real scenes.</p>
+          <h6>&#128512; NOTE: The Left video is not a still image; it is just moving at 0.34 FPS, while ours renders at
+            a smooth(er) 8.6 FPS!&#128512; </h6>
+          <br>
+          <div class="video-container">
+            <div class="embed-responsive embed-responsive-video-16by9">
+              <video width="640" height="360" autoplay loop muted>
+                <source src="./images/americano.mp4" type="video/mp4">
+                <source src="./images/americano.webm" type="video/webm">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="embed-responsive embed-responsive-video-16by9">
+              <video width="640" height="360" autoplay loop muted>
+                <source src="./images/vrigchicken.mp4" type="video/mp4">
+                <source src="./images/vrigchicken.webm" type="video/webm">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <!-- <div class="img-magnifier-container embed-responsive embed-responsive-video-16by9">
+              <video id="myimage" src="images/americano.mp4" width="600" height="400" alt="Girl" autoplay loop muted>
+            </div>
+            <div class="img-magnifier-container embed-responsive embed-responsive-video-16by9">
+              <video style="width: 100px;" id="myimage2" src="images/vrigchicken.mp4" width="600" height="400" alt="Girl" autoplay loop muted>
+            </div> -->
+            <!-- <script>
+              function magnify(imgID, zoom) {
+                var img, glass, w, h, bw;
+                img = document.getElementById(imgID);
+
+                /* Create magnifier glass: */
+                glass = document.createElement("DIV");
+                glass.setAttribute("class", "img-magnifier-glass");
+
+                /* Insert magnifier glass: */
+                img.parentElement.insertBefore(glass, img);
+
+                /* Set background properties for the magnifier glass: */
+                glass.style.backgroundImage = "url('" + img.src + "')";
+                glass.style.backgroundRepeat = "no-repeat";
+                console.log(img.style.width)
+                glass.style.backgroundSize = (img.style.width * zoom) + "px " + ((img.style.height) * zoom) + "px";
+                bw = 3;
+                w = glass.offsetWidth / 2;
+                h = glass.offsetHeight / 2;
+                // console.log(parseFloat(img.style.width))
+                /* Execute a function when someone moves the magnifier glass over the image: */
+                glass.addEventListener("mousemove", moveMagnifier);
+                img.addEventListener("mousemove", moveMagnifier);
+
+                /*and also for touch screens:*/
+                glass.addEventListener("touchmove", moveMagnifier);
+                img.addEventListener("touchmove", moveMagnifier);
+                function moveMagnifier(e) {
+                  var pos, x, y;
+                  /* Prevent any other actions that may occur when moving over the image */
+                  e.preventDefault();
+                  /* Get the cursor's x and y positions: */
+                  pos = getCursorPos(e);
+                  x = pos.x;
+                  y = pos.y;
+                  console.log(img.style.width)
+                  /* Prevent the magnifier glass from being positioned outside the image: */
+                  if (x > (img.width) - (w / zoom)) {x = img.width - (w / zoom);}
+                  if (x < w / zoom) {x = w / zoom;}
+                  if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+                  if (y < h / zoom) {y = h / zoom;}
+                  /* Set the position of the magnifier glass: */
+                  glass.style.left = (x - w) + "px";
+                  glass.style.top = (y - h) + "px";
+                  /* Display what the magnifier glass "sees": */
+                  glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+                }
+
+                function getCursorPos(e) {
+                  var a, x = 0, y = 0;
+                  e = e || window.event;
+                  /* Get the x and y positions of the image: */
+                  a = img.getBoundingClientRect();
+                  /* Calculate the cursor's x and y coordinates, relative to the image: */
+                  x = e.pageX - a.left;
+                  y = e.pageY - a.top;
+                  /* Consider any page scrolling: */
+                  x = x - window.pageXOffset;
+                  y = y - window.pageYOffset;
+                  return {x : x, y : y};
+                }
+              }
+              magnify("myimage", 1.2);
+              magnify("myimage2", 1.2);
+            </script> -->
+          </div>
+          <br>
+          <br>
+          <p>We also tested DyLiN on synthetic scenes. In addition to significantly faster render times, we achieve
+            superior fidelity!
+            Ours-1 and Ours-2 are simply extensions of one another. We are currently awaiting a patent; therefore,
+            specific details of the methods will not yet be released.
+          </p>
+          <div class="row" style="margin-bottom:5px">
+            <div class="col" style="text-align:center">
+              <img class="thumbnail" src="./images/synthetic.png" style="width:90%; margin-bottom:20px">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+  </div>
+
+
+  </div>
+</body>
+
+</html>
